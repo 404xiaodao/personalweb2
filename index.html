@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="bootstrap-3.3.7-dist/js/jquery-3.2.1.js"></script>
+   <!-- <script src="date.js"></script>
+
+    <!-- 引入 Bootstrap -->
+
+    <!-- 包括所有已编译的插件 -->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        var banners = ["img/zy1.jpg","img/zy2.jpg","img/zy3.jpg","img/zy4.jpg"]; // 图片地址
+        var counter = 0;
+        function run(){
+            setInterval(cycle,3000);  //重复运行cycle函数，周期1000ms
+
+        }
+        function cycle(){
+            counter++;
+            if(counter == banners.length)
+                counter = 0;
+            document.getElementById("banner").src = banners[counter];
+            //$("#banner").src=banners[counter];
+
+        }
+    </script>
+
+    <style>
+        body {
+            margin: auto;
+            clear: none;
+            float: none;
+        }
+    
+        #zuida {
+            margin: auto;
+            height: 560px;
+            width: 810px;
+            background-color: #5C8C8A;
+        }
+        #top{
+            height: 90px;
+        }
+        #main{
+            height: 460px;
+        }
+        #main #left{
+           width: 300px;
+            height: 455px;
+            float: left;
+        }
+        #main #R{
+            padding-left: 5px;
+            width: 500px;
+            height: 460px;
+            float: left;
+        }
+        #main #R #right{
+             height: 405px;
+         }
+        #main #R #rBottpm{
+            height: 50px;
+            text-align: center;
+            background-color:#5F7FB1;
+
+        }
+        p{
+            padding-top: 15px;
+        }
+        ul {
+            list-style-type: none;
+            text-align: center;
+        }
+        #top ul li{
+            float:left;
+            width: 120px;
+            height: 90px;
+            font-size: 16px;
+            padding-right: 35px;
+            margin-right: 39px;
+            text-align: center;
+            padding-top: 30px;
+			color:black;
+        }
+        #top a
+        {
+            width: 120px;
+            height: 35px;
+            float:left;
+            text-decoration:none;
+            color:black;
+            background-color:#B7D9C1;
+            text-align: center;
+            padding-top: 5px;
+
+        }
+        #top a:hover {
+            background-color:#D7DF86;
+        }
+         img {
+         width: 100%;
+             height: 100%;
+        }
+        #top ul li p{
+            font-size: small;
+        }
+    </style>
+</head>
+<body onload = "run();" >
+<div id="zuida">
+    <div id="top" >
+        <ul>
+           <li><p id="date"><button onclick="getCurrentDate();"></button></p></li>
+            <li  backgroudcolor="#89b0ae"><a href="#">主页</a></li>
+            <li><a href="movie.html">电影</a></li>
+            <li><a href="poem.html">诗歌</a></li>
+            <li><a href="note.html">记录</a></li>
+        </ul>
+    </div>
+    <div id="main" >
+        <div id="left">
+            <img src="img/个人.jpg">
+        </div>
+        <div id="R">
+          <div id="right" >
+
+              <img id="banner" alt="banner" src="img/zy1.jpg" >
+          </div>
+            <div id="rBottpm">
+                <p>我喜欢在路上走，太阳爱我，也爱所有人。</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function getCurrentDate(format) {
+        var now = new Date();
+        var year = now.getFullYear(); //得到年份
+        var month = now.getMonth();//得到月份
+        var date = now.getDate();//得到日期
+        var day = now.getDay();//得到周几
+        var hour = now.getHours();//得到小时
+        var minu = now.getMinutes();//得到分钟
+        var sec = now.getSeconds();//得到秒
+        month = month + 1;
+        if (month < 10) month = "0" + month;
+        if (date < 10) date = "0" + date;
+        if (hour < 10) hour = "0" + hour;
+        if (minu < 10) minu = "0" + minu;
+        if (sec < 10) sec = "0" + sec;
+        var time = "";
+        //精确到天
+        if(format==1){
+            time = year + "-" + month + "-" + date;
+        }
+        //精确到分
+        else if(format==2){
+            time = year + "-" + month + "-" + date+ " " + hour + ":" + minu + ":" + sec;
+        }
+        return time;
+    }
+    document.getElementById("date").innerText=getCurrentDate(2);
+</script>
+</html>
